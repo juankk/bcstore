@@ -10,14 +10,14 @@ class CustomersController extends BaseController
 {
     public function index()
     {
-        /** @var StoreRepositoryInterface $customer_repository */
-        $customer_repository = resolve( StoreRepository::class )->getRepository();
+        /** @var StoreRepositoryInterface $store_repository */
+        $store_repository = resolve( StoreRepository::class )->getRepository();
 
         /**
          * TODO
          * - Implement Paginator
          */
 
-        return view('customers', ['customers' => $customer_repository->getCustomersWithOrders() ] );
+        return view('customers', ['customers' => $store_repository->getCustomersWithOrders() ] );
     }
 }

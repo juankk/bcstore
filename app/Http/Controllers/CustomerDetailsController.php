@@ -11,11 +11,12 @@ class CustomerDetailsController extends BaseController
 {
     public function show($id)
     {
-        /** @var StoreRepositoryInterface $customer_repository */
-        $customer_repository = resolve( StoreRepository::class )->getRepository();
+        /** @var StoreRepositoryInterface $store_repository */
+        $store_repository = resolve( StoreRepository::class )->getRepository();
+
         /** @var Customer $customer */
-        $customer = $customer_repository->getCustomer( $id );
-        $customer_orders = $customer_repository->getOrders( $id );
+        $customer = $store_repository->getCustomer( $id );
+        $customer_orders = $store_repository->getOrders( $id );
         $customer->setOrders( $customer_orders );
 
         //getting customer lifetime value
