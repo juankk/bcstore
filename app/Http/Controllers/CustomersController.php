@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Store\StoreRepository;
-use App\Store\StoreRepositoryInterface;
+use App\Store\StoreContainer;
+use App\Store\StoreInterface;
 use Illuminate\Routing\Controller as BaseController;
 
 class CustomersController extends BaseController
 {
     public function index()
     {
-        /** @var StoreRepositoryInterface $store_repository */
-        $store_repository = resolve( StoreRepository::class )->getRepository();
-
+        /** @var StoreInterface $store */
+        $store = resolve( StoreContainer::class )->getStore();
+        $customers = $store->getCustomersWithOrders();
         /**
          * TODO
          * - Implement Paginator
          */
 
-        return view('customers', ['customers' => $store_repository->getCustomersWithOrders() ] );
+        return view('customers', ['customers' =>  $customers] );
     }
 }

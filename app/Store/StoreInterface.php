@@ -3,7 +3,7 @@
 namespace App\Store;
 
 
-interface StoreRepositoryInterface
+interface StoreInterface
 {
     public function getCustomersWithOrders();
     public function getCustomer( $customer_id );

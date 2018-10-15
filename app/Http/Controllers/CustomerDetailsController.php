@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Store\Models\Customer;
-use App\Store\StoreRepository;
-use App\Store\StoreRepositoryInterface;
+use App\Store\StoreContainer;
+use App\Store\StoreInterface;
 use Illuminate\Routing\Controller as BaseController;
 
 class CustomerDetailsController extends BaseController
 {
     public function show($id)
     {
-        /** @var StoreRepositoryInterface $store_repository */
-        $store_repository = resolve( StoreRepository::class )->getRepository();
+        /** @var StoreInterface $store */
+        $store = resolve( StoreContainer::class )->getStore();
 
         /** @var Customer $customer */
-        $customer = $store_repository->getCustomer( $id );
-        $customer_orders = $store_repository->getOrders( $id );
+        $customer = $store->getCustomer( $id );
+        $customer_orders = $store->getOrders( $id );
         $customer->setOrders( $customer_orders );
 
         //getting customer lifetime value

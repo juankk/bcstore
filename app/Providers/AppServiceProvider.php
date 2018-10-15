@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Store\Bigcommerce\Bigcommerce;
-use App\Store\StoreRepository;
+use App\Store\StoreContainer;
 use Bigcommerce\Api\Client;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,10 +32,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(StoreRepository::class, function(){
+        $this->app->singleton(StoreContainer::class, function(){
             //dependency injection
             $customerRepository = new Bigcommerce();
-            return new StoreRepository( $customerRepository );
+            return new StoreContainer( $customerRepository );
         });
     }
 }

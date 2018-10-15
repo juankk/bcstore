@@ -4,11 +4,11 @@ namespace App\Store\Bigcommerce;
 
 use App\Store\Bigcommerce\Factory\CustomerFactory;
 use App\Store\Bigcommerce\Factory\OrderFactory;
-use App\Store\StoreRepositoryInterface;
+use App\Store\StoreInterface;
 use App\Store\Models\Customer;
 use Bigcommerce\Api\Client as BigcommerceClient;
 
-class Bigcommerce implements StoreRepositoryInterface
+class Bigcommerce implements StoreInterface
 {
     /**
      * Gets all the customers with its associated orders

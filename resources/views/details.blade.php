@@ -17,7 +17,7 @@
                     <tr>
                         <td>{{ $order->getDate('') }}</td>
                         <td>{{ $order->getTotalProducts() }}</td>
-                        <td>{{ $order->getTotal() }}</td>
+                        <td>${{ $order->getTotal() }}</td>
                     </tr>
             @endforeach
                 <tr>
