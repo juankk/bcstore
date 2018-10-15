@@ -15,7 +15,7 @@
             <tbody>
             @foreach( $customer->getOrders() as $order )
                     <tr>
-                        <td>{{ $order->getDate('') }}</td>
+                        <td>{{ $order->getDate() }}</td>
                         <td>{{ $order->getTotalProducts() }}</td>
                         <td>${{ $order->getTotal() }}</td>
                     </tr>
